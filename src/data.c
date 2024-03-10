@@ -4072,6 +4072,7 @@ syms_of_data (void)
   DEFSYM (Qminibuffer_quit, "minibuffer-quit");
   DEFSYM (Qwrong_length_argument, "wrong-length-argument");
   DEFSYM (Qwrong_type_argument, "wrong-type-argument");
+  DEFSYM (Qtype_mismatch, "type-mismatch")
   DEFSYM (Qargs_out_of_range, "args-out-of-range");
   DEFSYM (Qvoid_function, "void-function");
   DEFSYM (Qcyclic_function_indirection, "cyclic-function-indirection");
@@ -4163,6 +4164,7 @@ syms_of_data (void)
   PUT_ERROR (Quser_error, error_tail, "");
   PUT_ERROR (Qwrong_length_argument, error_tail, "Wrong length argument");
   PUT_ERROR (Qwrong_type_argument, error_tail, "Wrong type argument");
+  PUT_ERROR (Qtype_mismatch, error_tail, "Types do not match");
   PUT_ERROR (Qargs_out_of_range, error_tail, "Args out of range");
   PUT_ERROR (Qvoid_function, error_tail,
 	     "Symbol's function definition is void");
