@@ -65,12 +65,12 @@ Return first line of the output of (describe-function-1 FUNC)."
 (ert-deftest help-fns-test-lisp-defun ()
   (let ((regexp (if (featurep 'native-compile)
                     "a subr-native-elisp in .+subr\\.el"
-                  "a compiled-function in .+subr\\.el"))
+                  "a byte-code-function in .+subr\\.el"))
         (result (help-fns-tests--describe-function 'last)))
     (should (string-match regexp result))))
 
 (ert-deftest help-fns-test-lisp-defsubst ()
-  (let ((regexp "a compiled-function in .+subr\\.el")
+  (let ((regexp "a byte-code-function in .+subr\\.el")
         (result (help-fns-tests--describe-function 'posn-window)))
     (should (string-match regexp result))))
 

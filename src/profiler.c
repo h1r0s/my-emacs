@@ -677,10 +677,6 @@ the same lambda expression, or are really unrelated function.  */)
     res = true;
   else if (COMPILEDP (f1) && COMPILEDP (f2))
     res = EQ (AREF (f1, COMPILED_BYTECODE), AREF (f2, COMPILED_BYTECODE));
-  else if (CONSP (f1) && CONSP (f2) && CONSP (XCDR (f1)) && CONSP (XCDR (f2))
-	   && EQ (Qclosure, XCAR (f1))
-	   && EQ (Qclosure, XCAR (f2)))
-    res = EQ (XCDR (XCDR (f1)), XCDR (XCDR (f2)));
   else
     res = false;
   return res ? Qt : Qnil;

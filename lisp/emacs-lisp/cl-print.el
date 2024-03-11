@@ -237,6 +237,37 @@ into a button whose action shows the function's disassembly.")
                               'byte-code-function object)))))
     (princ ")" stream)))
 
+(cl-defmethod cl-print-object ((object interpreted-function) stream)
+  (unless stream (setq stream standard-output))
+  (princ "#f(lambda " stream)
+  (let ((args (help-function-arglist object 'preserve-names)))
+    (if args
+        (prin1 args stream)
+        (princ "()" stream)))
+  (let ((env (aref object 2)))
+    (if (null env)
+        (princ " :dynbind" stream)
+      (princ " " stream)
+      (cl-print-object
+       (vconcat (mapcar (lambda (x) (if (consp x) (list (car x) (cdr x)) x))
+                        env))
+       stream)))
+  (let* ((doc+usage (documentation object 'raw))
+         ;; Drop args which `help-function-arglist' already printed.
+         (doc.usage (help-split-fundoc doc+usage object))
+         (doc (if doc.usage (cdr doc.usage) doc+usage)))
+    (when doc
+      (princ " " stream)
+      (prin1 doc stream)))
+  (let ((inter (interactive-form object)))
+   (when inter
+     (princ " " stream)
+     (cl-print-object inter stream)))
+  (dolist (exp (aref object 1))
+    (princ " " stream)
+    (cl-print-object exp stream))
+  (princ ")" stream))
+
 ;; This belongs in oclosure.el, of course, but some load-ordering issues make it
 ;; complicated.
 (cl-defmethod cl-print-object ((object accessor) stream)
