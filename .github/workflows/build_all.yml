@@ -57,6 +57,9 @@ jobs:
         git -C ./my_sub_modules clone https://${GITHUB_REPOSITORY_OWNER}:${GH_PAT}@github.com/h1r0s/my-tiff-4.5.0.git
         # 最初は先頭空白なしでMY_NDK_PATHSをセット
         MY_NDK_PATHS+="$MY_PWD/my_sub_modules/my-tiff-4.5.0"
+        #libpng
+        git -C ./my_sub_modules clone https://${GITHUB_REPOSITORY_OWNER}:${GH_PAT}@github.com/${GITHUB_REPOSITORY_OWNER}/my-libpng.git
+        MY_NDK_PATHS+=" $MY_PWD/my_sub_modules/my-libpng"
         # webp
         git -C ./my_sub_modules clone https://${GITHUB_REPOSITORY_OWNER}:${GH_PAT}@github.com/${GITHUB_REPOSITORY_OWNER}/my-webp.git
         MY_NDK_PATHS+=" $MY_PWD/my_sub_modules/my-webp"
@@ -143,6 +146,7 @@ jobs:
           --with-jpeg=yes \
           --with-webp=yes \
           --with-selinux=yes \
+          --with-png=yes \
           --with-imagemagick=yes
     # commit autotools outputs
     - name: commit configure outputs
