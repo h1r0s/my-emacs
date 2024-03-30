@@ -134,7 +134,7 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
 #define EMACS_CONFIGURATION "aarch64-unknown-linux-android22"
 
 /* Summary of some of the main features enabled by configure. */
-#define EMACS_CONFIG_FEATURES "GIF GMP GNUTLS HARFBUZZ IMAGEMAGICK JPEG JSON LCMS2 LIBSELINUX LIBXML2 MODULES NOTIFY INOTIFY PDUMPER SECCOMP THREADS TREE_SITTER WEBP ZLIB"
+#define EMACS_CONFIG_FEATURES "GIF GMP GNUTLS HARFBUZZ IMAGEMAGICK JPEG JSON LCMS2 LIBSELINUX LIBXML2 MODULES NOTIFY INOTIFY PDUMPER PNG SECCOMP THREADS TREE_SITTER WEBP ZLIB"
 
 /* Define to the options passed to configure. */
 #define EMACS_CONFIG_OPTIONS "--with-png=yes --with-webp=yes --with-gif=yes --with-json=yes --with-jpeg=yes --with-xml2=yes --with-sqlite3=yes --with-gnutls=yes --with-tiff=yes --with-selinux=yes --with-modules=yes --with-tree-sitter=yes --with-imagemagick=yes --with-lcms2=yes --with-mailutils= --with-pop=no-by-default --with-harfbuzz=yes --with-threads=yes --enable-check-lisp-object-type= 'CFLAGS= -Werror=implicit-function-declaration'"
@@ -1140,7 +1140,7 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
 #define HAVE_PIPE2 1
 
 /* Define to 1 if you have the png library. */
-/* #undef HAVE_PNG */
+#define HAVE_PNG 1
 
 /* Define to 1 if you have the `posix_madvise' function. */
 /* #undef HAVE_POSIX_MADVISE */
